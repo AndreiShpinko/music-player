@@ -35,7 +35,14 @@ function playSong() {
   playBtn.querySelector("i.fas").classList.remove("fa-play");
   playBtn.querySelector("i.fas").classList.add("fa-pause");
 
-  audio.play();
+  let isPlaying =
+    audio.currentTime > 0 &&
+    !audio.paused &&
+    !audio.ended &&
+    audio.readyState > audio.HAVE_CURRENT_DATA;
+
+  if (!isPlaying) audio.play();
+
   intervalID = setInterval(() => {
     let minutes = (audio.currentTime / 60) | 0;
     let seconds = Math.round(audio.currentTime) % 60;
