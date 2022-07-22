@@ -14,8 +14,7 @@ const durationEl = document.getElementById("time-duration");
 // Song titles
 const songs = ["hey", "summer", "ukulele"];
 
-let songIndex = 1;
-
+let songIndex = 0;
 loadSong(songs[songIndex]);
 
 // Update song details
@@ -87,7 +86,6 @@ function updateProgress(e) {
 function setProgress(e) {
   const width = this.clientWidth;
   const clickX = e.offsetX;
-  console.log(audio);
   const duration = audio.duration;
 
   audio.currentTime = (clickX / width) * duration;
